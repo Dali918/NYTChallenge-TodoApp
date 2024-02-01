@@ -7,5 +7,6 @@ import com.example.nytchallenge.util.constants.DATABASE_TABLE
 data class TaskEntity(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
-    val task: String
+    val task: String,
+    val isDone: Boolean
 )
