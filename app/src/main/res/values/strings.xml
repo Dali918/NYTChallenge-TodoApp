@@ -11,4 +11,5 @@
     <string name="no">No</string>
     <string name="save_action">Save</string>
     <string name="yes">Yes</string>
+    <string name="task_edit_title">Edit Task</string>
 </resources>

@@ -35,9 +35,23 @@ class TaskEditViewModel(
         }
     }
     /**
+     * Updates the [taskUiState] with the value provided in the argument.
+     */
+    fun updateUiState(taskDetails: TaskDetails) {
+        taskUiState = TaskUiState(
+            taskDetails = taskDetails,
+            isDone = taskDetails.isDone
+        )
+    }
+
+    /**
      * Updates the task in the Room Database.
      */
     suspend fun updateTask(){
         taskRepository.updateTask(taskUiState.taskDetails.toTaskEntity())
+    }
+
+    fun saveTask() {
+        TODO("Not yet implemented")
     }
 }
