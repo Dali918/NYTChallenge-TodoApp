@@ -80,9 +80,7 @@ fun TaskEntryBody(
         OutlinedTextField(
             value = taskUiState.taskDetails.task,
             onValueChange = { onValueChange(taskUiState.taskDetails.copy(task = it)) },
-            label = { //TODO: add string resource
-                Text("Task")
-            },
+            label = { R.string.task_label },
             colors = OutlinedTextFieldDefaults.colors(
                 focusedContainerColor = MaterialTheme.colorScheme.secondaryContainer,
                 unfocusedContainerColor = MaterialTheme.colorScheme.secondaryContainer,

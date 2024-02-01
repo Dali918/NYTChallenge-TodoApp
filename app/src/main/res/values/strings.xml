@@ -7,7 +7,7 @@
     <string name="delete_question">Are you sure you want to delete?</string>
     <string name="no_tasks">No Tasks Yet!\nTap + to add.</string>
     <string name="edit_item_title">Edit Task</string>
-    <string name="task">Task</string>
+    <string name="task_label">Task</string>
     <string name="task_entry_title">Add Task</string>
     <string name="no">No</string>
     <string name="save_action">Save</string>
