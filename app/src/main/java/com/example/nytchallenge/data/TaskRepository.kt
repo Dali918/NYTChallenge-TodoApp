@@ -2,16 +2,16 @@ package com.example.nytchallenge.data
 
 import kotlinx.coroutines.flow.Flow
 
-interface TaskRepositoryInterface {
+interface TaskRepository {
     /**
      * Get All Tasks from the data source
      */
-    fun getAllTasks(): Flow<List<TaskEntity>>
+    fun getAllTasksStream(): Flow<List<TaskEntity>>
 
     /**
      * Get a single task from the data source
      */
-    fun getTask(id: Int): Flow<TaskEntity>
+    fun getTaskStream(id: Int): Flow<TaskEntity?>
 
     /**
      * Insert a task into the data source
