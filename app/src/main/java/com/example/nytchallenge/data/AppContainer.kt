@@ -6,7 +6,7 @@ import android.content.Context
  * An app container for dependency injection
  */
 interface AppContainer{
-    val tasksRepository: TaskRepository
+    val taskRepository: TaskRepository
 }
 
 /**
@@ -14,7 +14,7 @@ interface AppContainer{
  */
 
 class AppDataContainer(private val context: Context): AppContainer {
-    override val tasksRepository: TaskRepository by lazy {
+    override val taskRepository: TaskRepository by lazy {
         TasksOfflineRepository(TasksDatabase.getDatabase(context).taskDao())
     }
 }
