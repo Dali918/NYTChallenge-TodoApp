@@ -23,8 +23,8 @@ class TaskDaoTest {
     private lateinit var tasksDatabase: TasksDatabase
 
     //declare tasks to be used in tests
-    private var task1 = TaskEntity(1, "Task 1")
-    private var task2 = TaskEntity(2, "Task 2")
+    private var task1 = TaskEntity(1, "Task 1", false)
+    private var task2 = TaskEntity(2, "Task 2", false)
 
     //initialize db and dao
     @Before
