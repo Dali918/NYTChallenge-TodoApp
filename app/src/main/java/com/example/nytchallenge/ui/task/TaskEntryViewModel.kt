@@ -37,7 +37,8 @@ class TaskEntryViewModel(private val taskRepository: TaskRepository) : ViewModel
 
 data class TaskUiState(
     val taskDetails: TaskDetails = TaskDetails(),
-    val isDone: Boolean = false
+    val isDone: Boolean = false,
+    val isEntryValid: Boolean = taskDetails.task.isNotBlank()
 )
 
 data class TaskDetails(
