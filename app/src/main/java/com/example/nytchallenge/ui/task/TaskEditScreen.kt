@@ -19,6 +19,8 @@ import kotlinx.coroutines.launch
 object TaskEditDestination: NavigationDestination{
     override val route = "task_edit"
     override val titleRes = R.string.task_edit_title
+    const val taskIdArg = "taskId"
+    val routeWithArgs = "$route/{$taskIdArg}"
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -42,11 +44,11 @@ fun TaskEditScreen(
         modifier = modifier
     ) { innerPadding ->
         TaskEntryBody(
-            taskUiState = viewModel.taskUiState,
+            taskUiState = viewModel.uiState,
             onValueChange = viewModel::updateUiState,
             onSaveClick = {
                 coroutineScope.launch {
-                    viewModel.saveTask()
+                    viewModel.updateTask()
                     navigateBack()
                 }
             },

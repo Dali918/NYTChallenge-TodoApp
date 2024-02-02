@@ -1,17 +1,11 @@
 <resources>
     <string name="app_name">NYTChallenge</string>
-    <string name="home_title">To do!</string>
-    <string name="attention">Attention</string>
+    <string name="home_title">Taskify</string>
     <string name="back_button">Back</string>
-    <string name="delete">Delete</string>
-    <string name="delete_question">Are you sure you want to delete?</string>
     <string name="no_tasks">No Tasks Yet!\nTap + to add.</string>
-    <string name="edit_item_title">Edit Task</string>
     <string name="task_label">Task</string>
     <string name="task_entry_title">Add Task</string>
-    <string name="no">No</string>
     <string name="save_action">Save</string>
-    <string name="yes">Yes</string>
     <string name="task_edit_title">Edit Task</string>
     <string name="add_task">Add New Task\n</string>
 </resources>

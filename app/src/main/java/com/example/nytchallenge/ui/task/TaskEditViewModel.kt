@@ -18,27 +18,27 @@ class TaskEditViewModel(
     /**
      * Holds current task ui state
      */
-    var taskUiState by mutableStateOf(TaskUiState())
+    var uiState by mutableStateOf(TaskUiState())
         private set
 
-    private val taskId: Int = 0 //TODO: get task id from savedStateHandle
+    private val taskId: Int = checkNotNull(savedStateHandle[TaskEditDestination.taskIdArg])
 
     /**
      * Initializes the taskUiState with the task id provided when launching the screen .
      */
     init {
         viewModelScope.launch{
-            taskUiState = taskRepository.getTaskStream(taskId)
+            uiState = taskRepository.getTaskStream(taskId)
                 .filterNotNull()
                 .first()
                 .toTaskUiState()
         }
     }
     /**
-     * Updates the [taskUiState] with the value provided in the argument.
+     * Updates the [uiState] with the value provided in the argument.
      */
     fun updateUiState(taskDetails: TaskDetails) {
-        taskUiState = TaskUiState(
+        uiState = TaskUiState(
             taskDetails = taskDetails,
             isDone = taskDetails.isDone
         )
@@ -48,10 +48,7 @@ class TaskEditViewModel(
      * Updates the task in the Room Database.
      */
     suspend fun updateTask(){
-        taskRepository.updateTask(taskUiState.taskDetails.toTaskEntity())
+        taskRepository.updateTask(uiState.taskDetails.toTaskEntity())
     }
 
-    fun saveTask() {
-        TODO("Not yet implemented")
-    }
 }

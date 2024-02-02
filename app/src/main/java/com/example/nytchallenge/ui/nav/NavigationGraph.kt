@@ -3,11 +3,14 @@ package com.example.nytchallenge.ui.nav
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.navArgument
 import com.example.nytchallenge.ui.home.HomeDestination
 import com.example.nytchallenge.ui.home.HomeScreen
 import com.example.nytchallenge.ui.task.TaskEditDestination
+import com.example.nytchallenge.ui.task.TaskEditScreen
 import com.example.nytchallenge.ui.task.TaskEntryDestination
 import com.example.nytchallenge.ui.task.TaskEntryScreen
 
@@ -16,7 +19,7 @@ import com.example.nytchallenge.ui.task.TaskEntryScreen
  */
 
 @Composable
-fun NavigationGraph(
+fun NavigationHost(
     navController: NavHostController,
     modifier: Modifier = Modifier
 ) {
@@ -35,7 +38,7 @@ fun NavigationGraph(
         composable(route = HomeDestination.route) {
             HomeScreen(
                 navigateToTaskEntry = { navController.navigate(TaskEntryDestination.route)},
-                navigateToTaskEdit = { navController.navigate(TaskEditDestination.route)}
+                navigateToTaskEdit = { navController.navigate("${TaskEditDestination.route}/$it")}
             )
         }
         /**
@@ -50,12 +53,19 @@ fun NavigationGraph(
         /**
          * Task Edit Destination
          */
-        composable(route = TaskEditDestination.route) {
-            TaskEntryScreen(
+        composable(
+            route = TaskEditDestination.routeWithArgs,
+            arguments = listOf(navArgument(TaskEditDestination.taskIdArg) {
+                type = NavType.IntType
+            })
+        ) {
+            TaskEditScreen(
                 navigateBack = { navController.popBackStack() },
                 onNavigateUp = { navController.navigateUp() }
             )
         }
+
+
 
     }
 

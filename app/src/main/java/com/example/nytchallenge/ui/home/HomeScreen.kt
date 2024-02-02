@@ -2,6 +2,7 @@ package com.example.nytchallenge.ui.home
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -49,7 +50,6 @@ object HomeDestination : NavigationDestination {
     override val route = "home"
     override val titleRes = R.string.home_title
 }
-
 @OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
@@ -88,7 +88,7 @@ fun HomeScreen(
             }
         },
     ){
-        innnerPadding->
+        innerPadding->
         HomeBody(
             tasksList = homeUIState.tasksList,
             onTaskClick = navigateToTaskEdit,
@@ -97,7 +97,7 @@ fun HomeScreen(
                     viewModel.onTaskCheckedChange(it)
                 }
             },
-            modifier = Modifier.padding(innnerPadding)
+            modifier = Modifier.padding(innerPadding)
         )
     }
 
@@ -117,7 +117,7 @@ fun HomeBody(
         if (tasksList.isEmpty()) {
             Text(
                 text = stringResource(R.string.no_tasks),
-                textAlign = TextAlign.Center,
+                textAlign = TextAlign.Start,
                 style = MaterialTheme.typography.titleLarge
             )
         } else {
@@ -125,7 +125,7 @@ fun HomeBody(
                 tasksList = tasksList.sortedWith(compareBy { it.isDone }),
                 onTaskClick = { onTaskClick(it.id) },
                 onCheckedChange = {onCheckedChange(it)},
-                modifier = Modifier.padding(horizontal = dimensionResource(id = R.dimen.padding_small))
+                modifier = Modifier.padding(dimensionResource(id = R.dimen.padding_small))
             )
         }
     }
@@ -138,13 +138,15 @@ fun TasksList(
     onCheckedChange: (TaskEntity) -> Unit,
     modifier: Modifier = Modifier
 ){
-    LazyColumn(modifier = modifier) {
+    LazyColumn(
+        modifier = modifier,
+    ) {
         items(items= tasksList, key = {task -> task.id}){ task->
             Task(
                 task = task,
                 onCheckedChange = onCheckedChange,
                 modifier = Modifier
-                    .fillMaxWidth()
+                    .padding(dimensionResource(id = R.dimen.padding_small))
                     .clickable { onTaskClick(task) }
             )
 
@@ -159,11 +161,16 @@ fun Task(
     modifier: Modifier = Modifier,
 ){
     Card(
-        modifier = modifier,
-        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
+        modifier = modifier.fillMaxWidth(),
+        elevation = CardDefaults.cardElevation(defaultElevation = 1.dp),
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.primaryContainer,
+            contentColor = MaterialTheme.colorScheme.onPrimaryContainer
+        )
     ) {
         Row(
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth(),
+            verticalAlignment = Alignment.CenterVertically
         ) {
             Box(Modifier.padding(8.dp)) {
                 Checkbox(
@@ -178,11 +185,11 @@ fun Task(
 
             Text(
                 text = task.task,
-                style = MaterialTheme.typography.bodyLarge,
+                style = MaterialTheme.typography.titleMedium,
                 modifier = Modifier
                     .padding(8.dp)
                     .fillMaxWidth(),
-                textAlign = TextAlign.Start,
+                textAlign = TextAlign.Center,
             )
 
         }

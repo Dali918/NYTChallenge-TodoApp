@@ -9,6 +9,8 @@ import com.example.nytchallenge.TaskApplication
 import com.example.nytchallenge.ui.home.HomeViewModel
 import com.example.nytchallenge.ui.task.TaskEditViewModel
 import com.example.nytchallenge.ui.task.TaskEntryViewModel
+import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory
+
 
 /**
  * Provide instances of ViewModel for different screens
@@ -39,4 +41,4 @@ object AppViewModelProvider {
  * [TaskApplication].
  */
 fun CreationExtras.inventoryApplication(): TaskApplication =
-    (this[ViewModelProvider.AndroidViewModelFactory.APPLICATION_KEY] as TaskApplication)
+    (this[AndroidViewModelFactory.APPLICATION_KEY] as TaskApplication)
