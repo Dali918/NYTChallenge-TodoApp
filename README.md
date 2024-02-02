@@ -84,3 +84,5 @@ to be learned about how to using gradle as a tool.
 
 Overall it was a great learning experience and I am happy with the app I was able to build in the time given. I intend to continue to work on it and make it a reasonable portfolio project. 
 
+### Screenshots
+![taskify.gif](taskify.gif)
