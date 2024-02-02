@@ -7,11 +7,14 @@ by Google.
 ### Features 
 The following core features are implemented in the app:
 - [x] Add a task
-- [x] Toggle task done or not done
+- [x] Toggle task DONE, NOT DONE state
 
 The following additional features are implemented in the app:
 - [x] Edit a task
-- [x] Sort tasks by done and not done, with done being at the bottom
+- [x] persist tasks locally using Room database
+- [x] persists task DONE, NOT DONE state
+- [x] Sort tasks by DONE and NOT DONE
+
 
 ### Architecture Overview
 The app adheres to MVVM architecture pattern, embracing single source of truth principle, via way of using a UDF (Unidirectional Data Flow) pattern. With the use of ViewModels, UI changes are observed
